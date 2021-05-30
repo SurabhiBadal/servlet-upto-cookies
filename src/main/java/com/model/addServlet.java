@@ -9,6 +9,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class addServlet extends HttpServlet{
 	
@@ -17,12 +18,13 @@ public class addServlet extends HttpServlet{
 		int j=Integer.parseInt(req.getParameter("num2"));
 		int k=i+j;
 		
-//		req.setAttribute("k", k);
-//		//Calling a servlet from another servlet
-//		
-//		RequestDispatcher rd=req.getRequestDispatcher("/square");
-//		rd.forward(req, res);
-		res.sendRedirect("square?k="+k);
+		
+		HttpSession session = req.getSession();
+		
+		session.setAttribute("k", k);
+		
+		res.sendRedirect("square");
+		
 	}
 	
 
