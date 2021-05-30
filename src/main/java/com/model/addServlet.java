@@ -12,16 +12,17 @@ import javax.servlet.http.HttpServletResponse;
 
 public class addServlet extends HttpServlet{
 	
-	public void doPost(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
+	public void doGet(HttpServletRequest req,HttpServletResponse res) throws IOException, ServletException {
 		int i=Integer.parseInt(req.getParameter("num1"));
 		int j=Integer.parseInt(req.getParameter("num2"));
 		int k=i+j;
 		
-		req.setAttribute("k", k);
-		//Calling a servlet from another servlet
-		
-		RequestDispatcher rd=req.getRequestDispatcher("/square");
-		rd.forward(req, res);
+//		req.setAttribute("k", k);
+//		//Calling a servlet from another servlet
+//		
+//		RequestDispatcher rd=req.getRequestDispatcher("/square");
+//		rd.forward(req, res);
+		res.sendRedirect("square?k="+k);
 	}
 	
 
